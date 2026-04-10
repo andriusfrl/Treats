@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+/* Define las variables globales y tokens de diseño para estandarizar el sistema visual de la plataforma */
+:root {
+  --bg-color: #f8fafc;
+  --text-main: #020617;
+  --accent: #2563eb;
+  --accent-soft: #eff6ff;
+  --white: #ffffff;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Configura el reset global, la animación base y los parámetros de renderizado del body */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+  font-family: 'Nunito', sans-serif; 
+  background: var(--bg-color); 
+  color: var(--text-main); 
+  overflow-x: hidden; 
+}
+
+/* Declara la animación de entrada para la navegación fluida entre secciones */
+@keyframes fadeInSpa {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Gestiona el sistema de transiciones SPA y la escala tipográfica de los encabezados */
+.spa-view { animation: fadeInSpa 0.4s ease-out forwards; }
+.container { max-width: 1300px; margin: 0 auto; padding: 0 40px; } 
+
+h1, h2, h3 { 
+  font-family: 'Nunito', sans-serif; 
+  font-weight: 900; 
+  letter-spacing: -0.02em; 
+}
+
+
+/* Maneja la arquitectura de la barra de navegación, branding institucional y sistema de logos */
+.nav-container {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: absolute;
+  top: 0; left: 0; right: 0; 
+  z-index: 100;
+  padding: 0 40px;
+}
+
+.logo-group { display: flex; align-items: center; gap: 20px; }
+.treats-brand { display: flex; align-items: center; gap: 10px; }
+.treats-logo-icon { height: 30px; object-fit: contain; }
+.logo-divider { width: 2px; height: 28px; background-color: rgba(0,0,0,0.15); border-radius: 2px; }
+.utadeo-logo { height: 25px; object-fit: contain; }
+
+.logo { 
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.5rem; 
+  font-weight: 900; 
+  color: var(--text-main); 
+  letter-spacing: -0.05em; 
+  -webkit-text-stroke: 1.5px var(--text-main);
+}
+
+/* Estila el sistema de navegación por enlaces y los botones de acción secundarios (píldora) */
+.nav-group { display: flex; align-items: center; gap: 50px; }
+.nav-links { display: flex; gap: 35px; }
+
+.nav-links a { 
+  color: var(--text-main); 
+  text-decoration: none; 
+  font-weight: 800; 
+  font-size: 1.15rem; 
+  transition: var(--transition); 
+}
+.nav-links a:hover { color: var(--accent); }
+
+.btn-dark {
+  background: var(--text-main);
+  color: white;
+  padding: 12px 35px;
+  border-radius: 40px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-dark:hover { background: #333; transform: scale(1.05); }
+
+
+/* Implementa el layout del Hero mediante CSS Grid para posicionar el contenido y el visual */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  position: relative;
+  padding-top: 100px;
+}
+
+/* Controla el layout principal del Hero, jerarquía de textos y descripción del producto */
+.hero-content { z-index: 10; padding-right: 40px; }
+.hero-subtitle { font-weight: 800; font-size: 1.2rem; color: var(--accent); text-transform: uppercase; margin-bottom: 5px; }
+.hero-title { font-size: 5.5rem; line-height: 1.05; margin: 10px 0 30px; -webkit-text-stroke: 2px var(--text-main); }
+.hero-description { max-width: 450px; color: #666; margin-bottom: 40px; font-size: 1.2rem; font-weight: 600; }
+
+/* Configura el estilo de botón acentuado con box-shadow dinámico para la jerarquía de botones */
+.btn-accent {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 18px 45px;
+  border-radius: 40px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 10px 20px rgba(30, 58, 138, 0.2);
+}
+.btn-accent:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(30, 58, 138, 0.3); }
+
+/* Determina la composición visual del Hero mediante figuras orgánicas (Blobs) e imágenes procesadas */
+.hero-visual { position: relative; height: 100%; display: flex; align-items: center; justify-content: flex-end; }
+
+.bg-blob-main {
+  position: absolute;
+  top: 15%; right: -25%; 
+  width: 45vw; height: 75vh;
+  background: linear-gradient(135deg, var(--accent) 0%, #1e40af 100%);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  z-index: 1;
+  animation: blobFloat 6s infinite alternate ease-in-out; 
+}
+
+.hero-dog-img {
+  width: 80%;
+  z-index: 110;
+  position: relative;
+  transform: translateX(-80px) translateY(-20px);
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
+}
+
+
+/* Gestiona la arquitectura de la sección de procesos (Steps), cuadrículas y tarjetas informativas */
+.steps-wrapper { padding: 60px 0 100px; text-align: center; }
+.steps-heading { font-size: 3.2rem; margin-bottom: 60px; }
+.steps-interactive-area { position: relative; width: 100%; max-width: 1500px; margin: 0 auto; padding: 60px 0; }
+
+.blue-bg-block {
+  position: absolute;
+  top: 25%; bottom: 5%; left: 5%; right: 5%;
+  background: linear-gradient(135deg, var(--accent) 0%, #1e40af 100%);
+  border-radius: 40px;
+  z-index: 1;
+}
+
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; position: relative; z-index: 5; }
+
+.step-card {
+  background: white;
+  padding: 50px 30px;
+  border-radius: 35px;
+  text-align: center;
+  box-shadow: 0 25px 45px rgba(0,0,0,0.15); 
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: var(--transition);
+  height: 100%;
+}
+.step-card:hover { transform: translateY(-5px); }
+
+.step-number {
+  width: 55px; height: 55px; 
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 1.6rem; margin: 0 auto 25px;
+}
+.step-text { color: #666; font-size: 1rem; line-height: 1.6; margin-top: 15px; font-weight: 600; }
+
+
+/* Configura el módulo del clasificador (Classifier) incluyendo estados de carga y previsualización */
+.classifier-section { padding: 80px 0; }
+
+.classifier-box {
+  background: var(--white);
+  border-radius: 60px;
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background-image: url('./assets/cabito bg.png'); 
+  background-size: cover; 
+  background-position: center;
+}
+
+.classifier-heading { margin-bottom: 40px; color: white; font-size: 3.2rem; text-transform: uppercase; }
+
+.upload-inner {
+  background: white; border: 3px dashed var(--accent); border-radius: 40px; padding: 80px;
+  cursor: pointer; transition: var(--transition);
+}
+.upload-inner:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+.upload-icon { font-size: 4rem; margin-bottom: 15px; }
+.upload-subtitle { color: #666; margin-top: 10px; font-weight: bold; }
+
+.prediction-preview { text-align: center; background: white; padding: 40px; border-radius: 40px; }
+.preview-img { max-height: 350px; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); margin-bottom: 30px; }
+.btn-detect { padding: 15px 40px; font-size: 1.2rem; border-radius: 40px; }
+.upload-again { margin-top: 20px; cursor: pointer; text-decoration: underline; color: #666; font-weight: bold; }
+
+/* Maneja el centro de la interfaz del loader durante los estados de carga de la aplicación */
+.predicting-loader { text-align: center; padding: 60px 0; background: rgba(255,255,255,0.9); border-radius: 40px; }
+/* Diseña el spinner de carga mediante animaciones de rotación infinita en CSS */
+.loader-spinner {
+  width: 60px; height: 60px; border: 5px solid white; border-top-color: var(--accent); 
+  border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;
+}
+
+
+/* Estila el reporte de resultados (Results), badges de origen y el módulo de curiosidades de la raza */
+.result-grid-final { 
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; 
+  margin-top: 40px; text-align: left; background: white; padding: 40px; border-radius: 40px;
+}
+
+.result-img { width: 100%; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+.result-badge-group { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+
+.origin-badge {
+  display: inline-flex; align-items: center; background: #f5f7fa; border: 1px solid #e1e4e8; 
+  padding: 6px 14px; border-radius: 30px; font-size: 0.9rem; color: #1a1a1a; font-weight: bold;
+}
+
+.result-title { font-size: 4rem; line-height: 1; margin: 10px 0 20px; text-transform: capitalize; }
+.result-history { line-height: 1.8; color: #555; margin-bottom: 25px; font-size: 1.15rem; }
+
+.facts-box { background: var(--accent-soft); padding: 25px; border-radius: 20px; margin-bottom: 35px; }
+.facts-title { color: var(--accent); margin-bottom: 15px; font-size: 1.2rem; font-weight: 900; }
+.facts-list { color: #444; padding-left: 20px; line-height: 1.7; font-size: 1.1rem; }
+
+
+/* Define la arquitectura de la sección de noticias (News), rejillas auto-ajustables y tarjetas de blog */
+.news-page-wrapper { background: var(--bg-color); min-height: 100vh; padding: 180px 40px 60px; color: var(--text-main); }
+.news-header { display: flex; align-items: center; margin-bottom: 40px; }
+.news-accent-bar { width: 8px; height: 35px; background: var(--accent); margin-right: 15px; border-radius: 4px; }
+.news-main-title { font-size: 3rem; margin: 0; }
+
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+
+.news-card {
+  background: var(--white); border-radius: 25px; overflow: hidden; cursor: pointer; 
+  transition: var(--transition); border: 1px solid #e2e8f0;
+}
+.news-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+
+.news-card-media { position: relative; height: 220px; }
+.news-card-media img { width: 100%; height: 100%; object-fit: cover; }
+
+.news-card-badge {
+  position: absolute; top: 20px; left: 20px; background: var(--accent-soft); color: var(--accent); 
+  padding: 6px 14px; font-size: 0.8rem; font-weight: 800; border-radius: 20px; text-transform: uppercase;
+}
+
+.news-card-yt {
+  position: absolute; bottom: 15px; left: 15px; background: #ff0000; color: white; 
+  padding: 4px 8px; font-size: 0.75rem; font-weight: bold; border-radius: 8px; display: flex; align-items: center; gap: 5px;
+}
+
+.news-card-content { padding: 30px 25px; }
+
+
+/* Define la arquitectura de los elementos finales para el anclaje de firmas visuales en el footer */
+.footer-cabito { width: 100%; margin-top: 100px; text-align: center; display: flex; justify-content: center; align-items: flex-end; }
+
+/* Posiciona y escala la imagen de marca del bulldog en el pie de página mediante transformadas */
+.cabito-footer-img { width: 15%; transform: translateY(2px); }
+
+
+/* Declara el bloque de Media Queries para gestionar la responsividad en dispositivos móviles */
+@media (max-width: 1024px) {
+  .nav-container { padding: 0 30px; height: 100px; }
+  .logo { font-size: 1.3rem; }
+  .hero { grid-template-columns: 1fr; text-align: center; padding-top: 140px; }
+  .hero-content { padding-right: 0; margin-bottom: 50px; display: flex; flex-direction: column; align-items: center; }
+  .hero-title { font-size: 4rem; }
+  .hero-dog-img { width: 70%; transform: translateX(0) translateY(0); }
+  .steps-grid { grid-template-columns: 1fr; gap: 30px; }
+  .classifier-box { padding: 60px 30px; border-radius: 40px; }
+  .result-grid-final { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+}
+
+/* Adaptación para Smartphones */
+@media (max-width: 640px) {
+  .nav-container { flex-direction: column; height: auto; padding: 20px 10px; position: relative; gap: 15px; }
+  .hero-title { font-size: 2.8rem; }
+  .hero-description { font-size: 1rem; }
+  .btn-accent { width: 100%; text-align: center; }
+  .steps-heading { font-size: 2.2rem; }
+  .news-grid { grid-template-columns: 1fr; }
+  .cabito-footer-img { width: 35%; }
+}
+
+/* Define las animaciones de rotación para los elementos de carga */
+@keyframes spin { 100% { transform: rotate(360deg); } } 
+/* Ejecuta la oscilación orgánica de los elementos decorativos de fondo */
+@keyframes blobFloat { 
+  from { transform: translateY(0) rotate(0deg); } 
+  to { transform: translateY(-20px) rotate(3deg); } 
+}
