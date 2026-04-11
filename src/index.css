@@ -13,16 +13,19 @@
 /* Configura el reset global, la animación base y los parámetros de renderizado del body */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body { 
+html {
+  scroll-behavior: smooth;
   width: 100%;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch; /* Mejora el scroll en dispositivos iOS */
+  height: auto;
 }
 
 body { 
   font-family: 'Nunito', sans-serif; 
   background: var(--bg-color); 
   color: var(--text-main); 
+  width: 100%;
+  height: auto;
+  position: relative;
 }
 
 /* Declara la animación de entrada para la navegación fluida entre secciones */
@@ -70,6 +73,12 @@ h1, h2, h3 {
   color: var(--text-main); 
   letter-spacing: -0.05em; 
   -webkit-text-stroke: 1.5px var(--text-main);
+}
+
+.app-wrapper {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 /* Estila el sistema de navegación por enlaces y los botones de acción secundarios (píldora) */
@@ -287,33 +296,36 @@ h1, h2, h3 {
 
 /* Declara el bloque de Media Queries para gestionar la responsividad en dispositivos móviles */
 @media (max-width: 1024px) {
-  .nav-container { padding: 0 30px; height: 100px; }
-  .logo { font-size: 1.3rem; }
-  .hero { grid-template-columns: 1fr; text-align: center; padding-top: 140px; }
-  .hero-content { padding-right: 0; margin-bottom: 50px; display: flex; flex-direction: column; align-items: center; }
-  .hero-title { font-size: 3.5rem; }
-  .hero-dog-img { width: 60%; transform: translateX(0) translateY(0); }
-  .bg-blob-main { width: 70vw; height: 40vh; top: 45%; right: -5%; opacity: 0.6; }
-  .steps-grid { grid-template-columns: 1fr; gap: 30px; }
-  .blue-bg-block { top: 10%; bottom: 2%; left: 0; right: 0; border-radius: 0; }
-  .classifier-box { padding: 60px 30px; border-radius: 40px; }
-  .result-grid-final { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+  .nav-container { padding: 0 20px; height: 90px; }
+  .logo { font-size: 1.2rem; }
+  .nav-group { gap: 20px; }
+  .nav-links { display: none; } /* Ocultamos links en tablet/móvil para evitar amontonamiento */
+  
+  .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
+  .hero-content { padding-right: 0; margin-bottom: 30px; }
+  .hero-title { font-size: 3rem; }
+  .hero-visual { display: none; } /* Eliminamos la figura en pantallas medianas y pequeñas */
+  
+  .steps-grid { grid-template-columns: 1fr; gap: 20px; }
+  .blue-bg-block { display: none; }
+  
+  .classifier-heading { font-size: 2.2rem; text-align: center; width: 100%; }
+  .classifier-box { padding: 40px 20px; border-radius: 30px; }
+  
+  .result-grid-final { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+  .result-title { font-size: 2.5rem; }
 }
 
 @media (max-width: 640px) {
-  .app-wrapper { width: 100%; position: relative; }
-  .nav-container { flex-direction: column; height: auto; padding: 20px 10px; position: relative; gap: 15px; }
-  .hero-title { font-size: 2.5rem; -webkit-text-stroke: 1.5px var(--text-main); }
-  .hero-dog-img { width: 85%; }
-  .bg-blob-main { width: 100vw; height: 30vh; top: 70%; right: -30%; }
-  .hero-description { font-size: 1rem; padding: 0 20px; }
-  .steps-wrapper { padding: 40px 10px; }
-  .steps-heading { font-size: 2rem; margin-bottom: 30px; }
-  .blue-bg-block { display: none; } /* Quitamos el bloque azul en móvil para limpiar el diseño */
-  .step-card { padding: 30px 20px; }
-  .btn-accent { width: 90%; text-align: center; }
-  .news-grid { grid-template-columns: 1fr; }
-  .cabito-footer-img { width: 45%; }
+  .hero-title { font-size: 2.2rem; line-height: 1.1; }
+  .hero-description { font-size: 1rem; padding: 0; }
+  .btn-accent { width: 100%; padding: 15px; }
+  
+  .news-main-title { font-size: 2.2rem; text-align: center; }
+  .news-header { justify-content: center; }
+  .news-accent-bar { display: none; }
+  
+  .cabito-footer-img { width: 60%; display: block; margin: 0 auto; }
 }
 
 /* Define las animaciones de rotación para los elementos de carga */
