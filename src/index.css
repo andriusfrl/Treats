@@ -301,13 +301,18 @@ h1, h2, h3 {
   .nav-group { gap: 20px; }
   .nav-links { display: none; } /* Ocultamos links en tablet/móvil para evitar amontonamiento */
   
-  .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
-  .hero-content { padding-right: 0; margin-bottom: 30px; }
+  .hero { grid-template-columns: 1fr; text-align: center; padding-top: 100px; padding-bottom: 40px; }
+  .hero-content { padding-right: 0; margin-bottom: 20px; order: 1; }
   .hero-title { font-size: 3rem; }
-  .hero-visual { display: none; } /* Eliminamos la figura en pantallas medianas y pequeñas */
+  .hero-visual { 
+    display: flex; justify-content: center; align-items: center; 
+    order: 2; height: 300px; margin: 20px 0; overflow: visible;
+  }
+  .bg-blob-main { width: 280px; height: 280px; top: 50%; right: 50%; transform: translate(50%, -50%); opacity: 0.6; }
+  .hero-dog-img { width: 220px; transform: none; }
   
-  .steps-grid { grid-template-columns: 1fr; gap: 20px; }
-  .blue-bg-block { display: none; }
+  .steps-grid { grid-template-columns: 1fr; gap: 30px; }
+  .blue-bg-block { display: block; top: 50px; bottom: -20px; left: -20px; right: -20px; border-radius: 40px; }
   
   .classifier-heading { font-size: 2.2rem; text-align: center; width: 100%; }
   .classifier-box { padding: 40px 20px; border-radius: 30px; }
@@ -317,15 +322,21 @@ h1, h2, h3 {
 }
 
 @media (max-width: 640px) {
-  .hero-title { font-size: 2.2rem; line-height: 1.1; }
-  .hero-description { font-size: 1rem; padding: 0; }
-  .btn-accent { width: 100%; padding: 15px; }
+  .hero-title { font-size: 2.5rem; line-height: 1.1; margin-bottom: 15px; }
+  .hero-description { font-size: 1rem; padding: 0 10px; margin-bottom: 20px; }
+  .hero-visual { height: 250px; }
+  .bg-blob-main { width: 220px; height: 220px; }
+  .hero-dog-img { width: 180px; }
   
-  .news-main-title { font-size: 2.2rem; text-align: center; }
-  .news-header { justify-content: center; }
-  .news-accent-bar { display: none; }
+  .btn-accent { width: 100%; padding: 15px; order: 3; }
   
-  .cabito-footer-img { width: 60%; display: block; margin: 0 auto; }
+  .steps-wrapper { padding: 40px 15px; }
+  .blue-bg-block { left: 0; right: 0; }
+  
+  .news-main-title { font-size: 2.2rem; text-align: center; width: 100%; margin: 0 auto; }
+  .news-header { justify-content: center; text-align: center; flex-direction: column; gap: 10px; }
+  
+  .cabito-footer-img { width: 50%; display: block; margin: 0 auto; }
 }
 
 /* Define las animaciones de rotación para los elementos de carga */
