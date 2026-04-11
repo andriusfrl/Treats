@@ -23,7 +23,7 @@ function App() {
 
   // Carga inicial de noticias desde el backend
   useEffect(() => {
-    fetch('http://localhost:5000/news')
+    fetch(`${import.meta.env.VITE_API_URL}/news`)
       .then(res => res.json())
       .then(data => setNews(data))
       .catch(err => console.error("Error cargando noticias:", err));
