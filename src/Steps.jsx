@@ -27,7 +27,7 @@ function Steps() {
           <div className="step-card">
             <div className="step-number" style={{background: '#dcfce3', color: '#16a34a'}}>3</div>
             <h3>Resultados</h3>
-            <p className="step-text">Obtén al instante un informe completo con la historia, niveles de energía y cuidados.</p>
+            <p className="step-text">Obtén al instante un informe completo de tu mejor amigo</p>
           </div>
         </div>
       </div>
